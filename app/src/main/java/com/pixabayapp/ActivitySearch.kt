@@ -221,8 +221,10 @@ class ActivitySearch : BaseActivity() {
                         { partItem: SearchResult.Hit -> partItemClicked(partItem) })
                 } else {
                     Log.v(TAG, "setSearchResultData() :: notifyDataSetChanged()")
-                    rvSearch.adapter!!.notifyDataSetChanged()
-                    rvSearch.scrollToPosition(count - 2)
+                    if(searchResultHits.size > 0) {
+                        rvSearch.adapter!!.notifyDataSetChanged()
+                        rvSearch.scrollToPosition(count - 2)
+                    }
                     isLoading = false
                 }
             }
